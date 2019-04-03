@@ -1,0 +1,23 @@
+#include <iostream>
+#include <cstdio>
+using namespace std;
+int main()
+{
+	int use[15],now=0,mom=0;
+	for(int i=1;i<=12;i++)
+		cin>>use[i];
+	for(int i=1;i<=12;i++)
+	{
+		now+=300;
+		if(now<use[i])
+		{
+			cout<<"-"<<i<<endl;
+			return 0;
+		}
+		now-=use[i];
+		mom=mom+now/100*100;
+		now=now%100;
+	}
+	cout<<mom*1.2+now<<endl;
+
+}
