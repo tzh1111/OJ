@@ -1,0 +1,34 @@
+#include <iostream>
+#include <cstdio>
+#include <algorithm>
+using namespace std;
+const int MAX=2005;
+int main()
+{
+	int applenum=0,taonum=0;
+	int apple[MAX];
+	int tao[MAX];
+	bool b[MAX]={0};
+	cin>>applenum>>taonum;
+	for(int i=0;i<applenum;i++)
+		cin>>apple[i];
+	for(int i=0;i<taonum;i++)
+		cin>>tao[i];
+	sort(tao,tao+taonum);
+	int cnt=0;
+	for(int i=0;i<applenum;i++)
+	{
+		if(tao[0]>=apple[i])
+			continue;
+		for(int j=taonum-1;j>=0;j--)
+        {
+            if((tao[j]<apple[i])&&(tao[j]!=0)&&(b[j]==0))
+            {
+                b[j]=1;
+                cnt++;
+                break;
+            }
+        }
+	}
+	cout<<taonum-cnt;
+}
